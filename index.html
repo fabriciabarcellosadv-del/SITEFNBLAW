@@ -87,6 +87,7 @@
     cursor: none;
   }
   a { color: inherit; }
+  [hidden] { display: none !important; }
   ::selection { background: var(--mauve); color: var(--cream); }
 
   /* ── GRAIN TEXTURE ── */
@@ -284,7 +285,14 @@
   @media (min-width: 860px) { .pubs-head { flex-direction: row; justify-content: space-between; align-items: flex-end; } .pubs-all-btn { align-self: auto; } }
 
   .pubs-featured { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-  @media (min-width: 860px) { .pubs-featured { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 860px) {
+    .pubs-featured { grid-template-columns: 1fr 1fr; }
+    /* só uma publicação: cartão horizontal ocupando a largura toda */
+    .pubs-featured.single { grid-template-columns: 1fr; }
+    .pubs-featured.single .pub-card { flex-direction: row; }
+    .pubs-featured.single .pub-cover { flex: 0 0 52%; aspect-ratio: auto; min-height: 340px; }
+    .pubs-featured.single .pub-body { padding: 2.5rem 2.5rem 2.25rem; justify-content: center; }
+  }
   .pub-card { display: flex; flex-direction: column; text-align: left; width: 100%; background: var(--paper); border: none; border-radius: var(--radius); overflow: hidden; font-family: inherit; color: inherit; cursor: none; transition: transform .3s ease, box-shadow .3s ease; }
   .pub-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(36,28,25,.12); }
   .pub-cover { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--wine); }
@@ -298,6 +306,7 @@
   .pub-meta time { color: var(--light); letter-spacing: .06em; text-transform: none; font-size: .72rem; }
   .pub-meta i { width: 3px; height: 3px; border-radius: 50%; background: var(--light); }
   .pub-title { font-family: 'Playfair Display', serif; font-weight: 500; font-size: 1.45rem; line-height: 1.3; color: var(--ink); }
+  .pub-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.02rem; line-height: 1.45; color: var(--mauve-dark); margin-top: -.35rem; }
   .pub-excerpt { font-size: .87rem; color: var(--mid); line-height: 1.75; flex: 1; }
   .pub-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(36,28,25,.08); }
   .pub-author-mini { display: flex; align-items: center; gap: .6rem; font-size: .78rem; color: var(--mid); }
@@ -344,6 +353,10 @@
   .pub-text ul, .pub-text ol { margin: 0 0 1.2rem 1.2rem; color: var(--mid); font-size: .95rem; line-height: 1.85; }
   .pub-text blockquote { border-left: 2px solid var(--mauve); padding-left: 1.25rem; margin: 1.75rem 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem; color: var(--ink); line-height: 1.6; }
   .pub-text a { color: var(--mauve-dark); }
+  .pub-text sup { font-size: .7em; line-height: 0; color: var(--mauve-dark); }
+  .pub-notes { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid rgba(36,28,25,.12); }
+  .pub-notes p { font-size: .8rem; line-height: 1.7; color: var(--light); margin-bottom: .6rem; }
+  .pub-reader-sub { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.05rem, 2.2vw, 1.25rem); line-height: 1.45; color: var(--mauve-dark); margin: -1rem 0 1.75rem; }
   .pub-author { display: flex; align-items: center; gap: 1rem; margin-top: 2.5rem; padding-top: 1.75rem; border-top: 1px solid rgba(36,28,25,.12); }
   .pub-author img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: top center; flex-shrink: 0; }
   .pub-author-label { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--light); }
@@ -821,6 +834,7 @@
       <div class="pub-reader-content">
         <p class="pub-meta" id="pubReaderMeta"></p>
         <h2 class="pub-reader-title" id="pubReaderTitle"></h2>
+        <p class="pub-reader-sub" id="pubReaderSub" hidden></p>
         <div class="pub-text" id="pubReaderText"></div>
         <div class="pub-author" id="pubReaderAuthor"></div>
       </div>
@@ -905,9 +919,11 @@
     //   tipo   → 'Artigo', 'Nota' ou 'Evento'
     //   data   → 'AAAA-MM-DD'
     //   titulo, resumo → textos do cartão
+    //   subtitulo → opcional, aparece em itálico abaixo do título
     //   capa   → foto de capa em assets/publicacoes/ (ou '' para usar a capa padrão na cor do site)
     //   autor  → chave de AUTORES ('fabricia', 'edilania'...)
     //   texto  → o conteúdo, em parágrafos <p>...</p> (aceita também <h3>, <ul><li>, <blockquote>)
+    //            notas de rodapé: <sup>1</sup> no texto e, no fim, <div class="pub-notes"><p><sup>1</sup> Nota.</p></div>
     // ══════════════════════════════════════════════════════════════
     const AUTORES = {
       fabricia: { nome: 'Fabrícia Novaes Barcellos', cargo: 'Advogada · Fundadora do FNB Advocacia', foto: 'assets/fabricia.jpg' },
@@ -921,6 +937,7 @@
         tipo: 'Artigo',
         data: '2026-10-09',
         titulo: 'Título da publicação',
+        subtitulo: '',
         resumo: 'Resumo de uma ou duas linhas que aparece no cartão.',
         capa: 'assets/publicacoes/titulo-curto-do-artigo.jpg',
         autor: 'fabricia',
@@ -973,6 +990,7 @@
 
       // Destaques: as 2 mais recentes
       const featured = document.getElementById('pubsFeatured');
+      featured.classList.toggle('single', pubs.length === 1);
       pubs.slice(0, 2).forEach((p, i) => {
         const card = el('button', 'pub-card reveal'); card.type = 'button';
         card.style.setProperty('--d', (i * .1) + 's');
@@ -980,6 +998,7 @@
         const body = el('div', 'pub-body');
         body.appendChild(meta(p));
         body.appendChild(el('h3', 'pub-title', p.titulo));
+        if (p.subtitulo) body.appendChild(el('p', 'pub-subtitle', p.subtitulo));
         body.appendChild(el('p', 'pub-excerpt', p.resumo));
         const foot = el('div', 'pub-foot');
         const a = AUTORES[p.autor];
@@ -1000,6 +1019,7 @@
 
       // Painel "todas as publicações"
       document.getElementById('pubsCount').textContent = pubs.length;
+      if (pubs.length <= 2) document.getElementById('pubsAllBtn').hidden = true;
       const listItems = document.getElementById('pubListItems');
       const filters = document.getElementById('pubFilters');
       const tipos = ['Todas', ...new Set(pubs.map(p => p.tipo))];
@@ -1048,6 +1068,8 @@
         const m = document.getElementById('pubReaderMeta');
         m.replaceWith(Object.assign(meta(p), { id: 'pubReaderMeta' }));
         document.getElementById('pubReaderTitle').textContent = p.titulo;
+        const sub = document.getElementById('pubReaderSub');
+        sub.textContent = p.subtitulo || ''; sub.hidden = !p.subtitulo;
         document.getElementById('pubReaderText').innerHTML = p.texto;
         const box = document.getElementById('pubReaderAuthor');
         box.innerHTML = '';
