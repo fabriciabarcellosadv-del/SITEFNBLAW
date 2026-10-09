@@ -106,7 +106,6 @@ Pra publicar:
 
 ## Pendências / próximos passos
 
-- **Publicações**: a estrutura está pronta; falta cadastrar as primeiras
-  publicações reais.
+- **Publicações**: primeira publicação no ar (artigo KYC/KYP, 09/10/2026).
 - Qualquer alteração de texto, cor, foto ou seção nova: só pedir pro Claude
   Code continuar a partir daqui, usando este README como contexto do projeto.
