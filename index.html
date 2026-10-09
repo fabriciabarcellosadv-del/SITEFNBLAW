@@ -273,6 +273,58 @@
   .faq-a-inner { padding-bottom: 1.6rem; font-size: .9rem; color: var(--mid); line-height: 1.8; max-width: 560px; }
   @media (min-width: 900px) { .faq-grid { grid-template-columns: .7fr 1.3fr; } }
 
+  /* ── ARTIGOS ── */
+  .articles { background: var(--beige); }
+  .articles-head { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1rem; max-width: 560px; }
+  .articles-sub { font-size: .92rem; color: var(--mid); margin-top: -.5rem; }
+  .articles-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .article-card {
+    background: var(--paper); border: none; border-radius: var(--radius);
+    padding: 2rem 1.85rem; display: flex; flex-direction: column; gap: 1rem;
+    text-align: left; width: 100%; font-family: inherit; cursor: none;
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .article-card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(36,28,25,.1); }
+  .article-cat { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--mauve); }
+  .article-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; line-height: 1.32; color: var(--ink); }
+  .article-excerpt { font-size: .85rem; color: var(--mid); line-height: 1.75; flex: 1; }
+  .article-meta { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .article-date { font-size: .68rem; letter-spacing: .05em; color: var(--light); }
+  .article-read { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--mauve-dark); display: flex; align-items: center; gap: .4rem; }
+  .article-read svg { width: 13px; height: 13px; stroke: var(--mauve-dark); fill: none; stroke-width: 1.8; transition: transform .25s ease; }
+  .article-card:hover .article-read svg { transform: translateX(4px); }
+  .articles-more { margin-top: 2.5rem; text-align: center; }
+  .articles-more button { background: none; border: 1px solid rgba(124,92,84,.4); color: var(--mauve-dark); border-radius: 2rem; padding: .85rem 1.9rem; font-family: 'Inter', sans-serif; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; cursor: none; transition: background .2s, color .2s; }
+  .articles-more button:hover { background: var(--mauve); color: var(--cream); border-color: var(--mauve); }
+  .article-card.is-hidden { display: none; }
+  @media (min-width: 860px) { .articles-grid { grid-template-columns: repeat(3, 1fr); } }
+
+  /* ── ARTICLE MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+    padding: 1.5rem; background: rgba(54,42,36,.6); backdrop-filter: blur(4px);
+    opacity: 0; pointer-events: none; transition: opacity .3s ease;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal-card {
+    background: var(--paper); max-width: 640px; width: 100%; max-height: 85vh; overflow-y: auto;
+    border-radius: var(--radius); padding: 2.75rem 2.25rem; position: relative;
+    transform: translateY(18px); transition: transform .3s ease;
+  }
+  .modal-overlay.open .modal-card { transform: translateY(0); }
+  .modal-close {
+    position: absolute; top: 1.25rem; right: 1.25rem; width: 36px; height: 36px; border-radius: 50%;
+    border: 1px solid rgba(36,28,25,.2); background: none; display: flex; align-items: center; justify-content: center;
+    cursor: none; font-size: 1rem; color: var(--mid); transition: background .2s, color .2s, border-color .2s;
+  }
+  .modal-close:hover { background: var(--mauve); color: #fff; border-color: var(--mauve); }
+  .modal-cat { font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; color: var(--mauve); margin-bottom: .85rem; }
+  .modal-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.4rem, 3vw, 1.85rem); line-height: 1.3; margin-bottom: .6rem; padding-right: 2rem; }
+  .modal-date { font-size: .75rem; color: var(--light); margin-bottom: 1.75rem; }
+  .modal-body p { font-size: .92rem; color: var(--mid); line-height: 1.85; margin-bottom: 1.15rem; }
+  .modal-body p:last-child { margin-bottom: 0; }
+  body.modal-lock { overflow: hidden; }
+
   /* ── CONTATO ── */
   .contact { background: var(--wine); color: var(--cream); }
   .contact .section-label { color: var(--mauve-2); }
@@ -374,6 +426,7 @@
       <li><a href="#areas">Áreas de atuação</a></li>
       <li><a href="#equipe">Equipe</a></li>
       <li><a href="#faq">FAQ</a></li>
+      <li data-articles-link><a href="#artigos">Artigos</a></li>
       <li><a href="https://wa.me/5527992928887?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20FNB%20Advocacia." target="_blank" rel="noopener" class="nav-cta">Fale conosco</a></li>
     </ul>
   </nav>
@@ -610,6 +663,46 @@
     </div>
   </section>
 
+  <!-- ARTIGOS
+       Para publicar um artigo novo:
+       1) copie o bloco MODELO abaixo e cole logo depois de <div class="articles-grid"> (o mais novo fica em primeiro);
+       2) troque os textos e use um id novo (art1, art2, art3...) — o mesmo id em data-article e no <template>;
+       3) cole o <template> com o texto completo logo depois do comentário TEXTOS DOS ARTIGOS (no fim da seção).
+       Enquanto não houver nenhum artigo, a seção e os links "Artigos" ficam escondidos automaticamente.
+       Só os 3 mais recentes aparecem; os demais ficam no botão "Ver todos os artigos".
+
+       MODELO (cartão):
+       <button class="article-card reveal" data-article="artN" data-cat="Direito Societário" data-title="Título do artigo" data-date="9 de outubro de 2026">
+         <p class="article-cat">Direito Societário</p>
+         <h3 class="article-title">Título do artigo</h3>
+         <p class="article-excerpt">Resumo de duas linhas.</p>
+         <div class="article-meta">
+           <span class="article-date">9 de outubro de 2026</span>
+           <span class="article-read">Ler artigo <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+         </div>
+       </button>
+
+       MODELO (texto completo):
+       <template id="artN"><p>Primeiro parágrafo.</p><p>Segundo parágrafo.</p></template>
+  -->
+  <section class="articles" id="artigos" hidden>
+    <div class="wrap">
+      <div class="articles-head reveal">
+        <p class="section-label">conteúdo</p>
+        <h2 class="section-title">Artigos <em>&amp; publicações</em></h2>
+      </div>
+
+      <div class="articles-grid">
+      </div>
+
+      <div class="articles-more" hidden>
+        <button type="button" id="articlesMore">Ver todos os artigos</button>
+      </div>
+    </div>
+
+    <!-- TEXTOS DOS ARTIGOS -->
+  </section>
+
   <!-- CONTATO -->
   <section class="contact" id="contato">
     <div class="wrap">
@@ -692,6 +785,7 @@
         <a href="#sobre">Sobre</a>
         <a href="#areas">Áreas de atuação</a>
         <a href="#equipe">Equipe</a>
+        <a href="#artigos" data-articles-link>Artigos</a>
         <a href="#contato">Contato</a>
       </div>
     </div>
@@ -700,6 +794,17 @@
       <a href="https://www.instagram.com/fnb_advocacia" target="_blank" rel="noopener">@fnb_advocacia</a>
     </div>
   </footer>
+
+  <!-- ARTICLE MODAL -->
+  <div class="modal-overlay" id="articleModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="articleModalTitle">
+      <button class="modal-close" id="articleModalClose" aria-label="Fechar">✕</button>
+      <p class="modal-cat" id="articleModalCat"></p>
+      <h3 class="modal-title" id="articleModalTitle"></h3>
+      <p class="modal-date" id="articleModalDate"></p>
+      <div class="modal-body" id="articleModalBody"></div>
+    </div>
+  </div>
 
   <!-- FLOATERS -->
   <div class="floaters">
@@ -771,6 +876,56 @@
         if (!isOpen) { row.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; }
       });
     });
+    // ── Artigos: modal de leitura ──
+    const articleModal = document.getElementById('articleModal');
+    const articleModalCat = document.getElementById('articleModalCat');
+    const articleModalTitle = document.getElementById('articleModalTitle');
+    const articleModalDate = document.getElementById('articleModalDate');
+    const articleModalBody = document.getElementById('articleModalBody');
+    const articleModalClose = document.getElementById('articleModalClose');
+
+    function openArticle(card) {
+      const tpl = document.getElementById(card.dataset.article);
+      if (!tpl) return;
+      articleModalCat.textContent = card.dataset.cat || '';
+      articleModalTitle.textContent = card.dataset.title || '';
+      articleModalDate.textContent = card.dataset.date || '';
+      articleModalBody.innerHTML = tpl.innerHTML;
+      articleModal.classList.add('open');
+      articleModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-lock');
+      articleModal.scrollTop = 0;
+      articleModal.querySelector('.modal-card').scrollTop = 0;
+    }
+    function closeArticle() {
+      articleModal.classList.remove('open');
+      articleModal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-lock');
+    }
+    document.querySelectorAll('.article-card').forEach(card => {
+      card.addEventListener('click', () => openArticle(card));
+    });
+    articleModalClose.addEventListener('click', closeArticle);
+    articleModal.addEventListener('click', e => { if (e.target === articleModal) closeArticle(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeArticle(); });
+
+    // ── Artigos: esconde a seção sem artigos; mostra só os 3 mais recentes ──
+    const articleCards = document.querySelectorAll('.article-card');
+    if (articleCards.length) {
+      document.getElementById('artigos').hidden = false;
+    } else {
+      document.querySelectorAll('[data-articles-link]').forEach(el => el.remove());
+    }
+    const ARTICLES_VISIBLE = 3;
+    if (articleCards.length > ARTICLES_VISIBLE) {
+      articleCards.forEach((c, i) => { if (i >= ARTICLES_VISIBLE) c.classList.add('is-hidden'); });
+      const more = document.querySelector('.articles-more');
+      more.hidden = false;
+      document.getElementById('articlesMore').addEventListener('click', () => {
+        articleCards.forEach(c => { c.classList.remove('is-hidden'); c.classList.add('visible'); });
+        more.hidden = true;
+      });
+    }
   </script>
 
 </body>
