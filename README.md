@@ -106,6 +106,7 @@ Pra publicar:
 
 ## Pendências / próximos passos
 
-- **Publicações**: primeira publicação no ar (artigo KYC/KYP, 09/10/2026).
+- **Publicações**: no ar o artigo KYC/KYP (Fabrícia, 09/10/2026) e o artigo
+  Prova digital na era da IA (Edilania, 13/10/2026).
 - Qualquer alteração de texto, cor, foto ou seção nova: só pedir pro Claude
   Code continuar a partir daqui, usando este README como contexto do projeto.
