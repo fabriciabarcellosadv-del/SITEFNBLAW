@@ -917,7 +917,7 @@
     // Para publicar, acrescente um item na lista abaixo (a ordem não importa:
     // o site ordena pela data, e as 2 mais recentes ficam em destaque).
     //   id     → identificador único, sem espaços nem acentos (vira o link: fnblaw.com.br/#pub-meu-id)
-    //   tipo   → 'Artigo', 'Nota' ou 'Evento'
+    //   tipo   → 'Artigo', 'Nota' ou 'Evento' — ou mais de um: ['Artigo', 'Evento']
     //   data   → 'AAAA-MM-DD'
     //   titulo, resumo → textos do cartão
     //   subtitulo → opcional, aparece em itálico abaixo do título
@@ -934,11 +934,11 @@
     const PUBLICACOES = [
       {
         id: 'prova-digital-inteligencia-artificial',
-        tipo: 'Artigo',
+        tipo: ['Artigo', 'Evento'],
         data: '2026-10-13',
         titulo: 'Prova digital na era da inteligência artificial',
         subtitulo: 'Riscos e mecanismos de proteção para garantir sua autenticidade e confiabilidade',
-        resumo: 'A prova é um dos elementos fundamentais para a solução de controvérsias judiciais e administrativas. Seja testemunhal, documental ou pericial, ela permite demonstrar os fatos alegados pelas partes e contribui para a formação do convencimento de quem irá decidir. Mas como assegurar a autenticidade e a veracidade de uma prova em um cenário no qual mensagens, áudios, imagens e vídeos podem ser facilmente manipulados ou até mesmo criados por inteligência artificial? Quais mecanismos permitem verificar a confiabilidade desses elementos?',
+        resumo: 'A prova é um dos elementos fundamentais para a solução de controvérsias judiciais e administrativas. Mas como assegurar a autenticidade e a veracidade de uma prova em um cenário no qual mensagens, áudios, imagens e vídeos podem ser facilmente manipulados ou até mesmo criados por inteligência artificial? Quais mecanismos permitem verificar a confiabilidade desses elementos?',
         capa: 'assets/publicacoes/prova-digital-inteligencia-artificial.webp',
         autor: 'edilania',
         texto: `
@@ -1008,6 +1008,7 @@
       }
       section.hidden = false;
 
+      const tiposDe = p => Array.isArray(p.tipo) ? p.tipo : [p.tipo];
       const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
       const arrow = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
       const hoverable = e => {
@@ -1022,14 +1023,14 @@
         } else {
           const e = el('div', 'pub-cover-empty');
           e.innerHTML = '<div class="line-motif"><div class="v"></div><div class="h"></div></div>';
-          e.appendChild(el('span', '', p.tipo));
+          e.appendChild(el('span', '', tiposDe(p)[0]));
           c.appendChild(e);
         }
         return c;
       }
       function meta(p) {
         const m = el('p', 'pub-meta');
-        m.appendChild(el('span', '', p.tipo));
+        m.appendChild(el('span', '', tiposDe(p).join(' · ')));
         m.appendChild(el('i'));
         const t = el('time', '', fmtData(p.data)); t.dateTime = p.data; m.appendChild(t);
         return m;
@@ -1069,10 +1070,10 @@
       if (pubs.length <= 2) document.getElementById('pubsAllBtn').hidden = true;
       const listItems = document.getElementById('pubListItems');
       const filters = document.getElementById('pubFilters');
-      const tipos = ['Todas', ...new Set(pubs.map(p => p.tipo))];
+      const tipos = ['Todas', ...new Set(pubs.flatMap(tiposDe))];
       function renderList(tipo) {
         listItems.innerHTML = '';
-        pubs.filter(p => tipo === 'Todas' || p.tipo === tipo).forEach(p => {
+        pubs.filter(p => tipo === 'Todas' || tiposDe(p).includes(tipo)).forEach(p => {
           const row = el('button', 'pub-row'); row.type = 'button';
           row.appendChild(cover(p));
           const txt = el('div');
