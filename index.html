@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FNB Advocacia — Fabrícia Novaes Barcellos</title>
+
+<!-- SEO -->
+<meta name="description" content="Escritório de advocacia boutique em Vitória/ES, especializado em Direito Civil, Empresarial e Societário. Suporte jurídico estratégico para pessoas e negócios em constante transformação." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://fnblaw.com.br" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fnblaw.com.br" />
+<meta property="og:title" content="FNB Advocacia — Fabrícia Novaes Barcellos" />
+<meta property="og:description" content="Suporte jurídico estratégico para pessoas e negócios em constante transformação. Direito Civil, Empresarial e Societário." />
+<meta property="og:site_name" content="FNB Advocacia" />
+<meta property="og:locale" content="pt_BR" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="FNB Advocacia — Fabrícia Novaes Barcellos" />
+<meta name="twitter:description" content="Suporte jurídico estratégico para pessoas e negócios em constante transformação." />
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23433029'/%3E%3Crect x='6' y='6' width='52' height='52' fill='none' stroke='%23f5efe4' stroke-width='2'/%3E%3Ctext x='32' y='40' font-family='Georgia,serif' font-size='20' fill='%23f5efe4' text-anchor='middle'%3EFNB%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "FNB Advocacia — Fabrícia Novaes Barcellos",
+  "url": "https://fnblaw.com.br",
+  "email": "fnblaw@outlook.com",
+  "telephone": "+5527992928887",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "R. Abiail do Amaral Carneiro, 191, sala 311, Ed. Arábica, Enseada do Suá",
+    "addressLocality": "Vitória",
+    "addressRegion": "ES",
+    "postalCode": "29050-535",
+    "addressCountry": "BR"
+  },
+  "areaServed": "BR",
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "sameAs": [
+    "https://www.instagram.com/fnb_advocacia",
+    "https://www.instagram.com/fabricianbarcellos_"
+  ]
+}
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --mauve:      #8a6f63;
+    --mauve-2:    #a9897a;
+    --mauve-dark: #74594e;
+    --mauve-deep: #6e5449;
+    --wine:       #6b4f52;
+    --near-black: var(--wine);
+    --cream:      #f2efe9;
+    --paper:      #f8f5ef;
+    --beige:      #ece4d8;
+    --ink:        #3a2f2b;
+    --mid:        #6b5f59;
+    --light:      #a4948b;
+    --line-onmauve: rgba(245,239,228,.22);
+    --radius: .4rem;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    overflow-x: hidden;
+    cursor: none;
+  }
+  a { color: inherit; }
+  ::selection { background: var(--mauve); color: var(--cream); }
+
+  /* ── GRAIN TEXTURE ── */
+  .grain {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    opacity: .05; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ── CURSOR ── */
+  #cursor { position: fixed; width: 8px; height: 8px; background: var(--mauve); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: width .2s, height .2s, background .2s; }
+  #cursor-ring { position: fixed; width: 34px; height: 34px; border: 1px solid rgba(124,92,84,.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform .18s ease, width .25s, height .25s, border-color .2s, background .2s; }
+  body.cursor-hover #cursor { width: 5px; height: 5px; }
+  body.cursor-hover #cursor-ring { width: 56px; height: 56px; border-color: transparent; background: rgba(124,92,84,.12); }
+  @media (hover: none) { #cursor, #cursor-ring { display: none; } body { cursor: auto; } }
+
+  /* ── SCROLL PROGRESS ── */
+  #progress { position: fixed; top: 0; left: 0; height: 2px; background: var(--mauve); z-index: 101; width: 0%; transition: width .1s linear; }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); transition-delay: var(--d, 0s); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── LINE MOTIF ── */
+  .line-motif { position: absolute; inset: 0; display: flex; pointer-events: none; }
+  .line-motif .v { flex: 1; background-image: repeating-linear-gradient(to right, var(--line-onmauve) 0 1px, transparent 1px 18px); }
+  .line-motif .h { flex: 1.3; background-image: repeating-linear-gradient(to bottom, var(--line-onmauve) 0 1px, transparent 1px 18px); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 2.5rem;
+    background: rgba(245,239,228,.85);
+    backdrop-filter: blur(10px) saturate(1.2);
+    border-bottom: 1px solid rgba(36,28,25,.07);
+  }
+  .nav-logo { display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+  .nav-logo-img { height: 42px; width: auto; display: block; }
+  .nav-mark { width: 32px; height: 32px; flex-shrink: 0; border: 1px solid var(--mauve); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: .64rem; letter-spacing: .05em; color: var(--mauve); }
+  .nav-word { font-family: 'Playfair Display', serif; font-style: italic; font-size: .98rem; color: var(--ink); line-height: 1.1; }
+  .nav-word small { display: block; font-style: normal; font-size: .56rem; letter-spacing: .18em; text-transform: uppercase; color: var(--mauve); margin-top: .15rem; }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a:not(.nav-cta) { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--mid); text-decoration: none; position: relative; padding-bottom: 3px; }
+  .nav-links a:not(.nav-cta)::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--mauve); transition: width .25s ease; }
+  .nav-links a:not(.nav-cta):hover::after { width: 100%; }
+  .nav-links a:not(.nav-cta):hover { color: var(--ink); }
+  .nav-cta { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; background: var(--ink); color: var(--cream); padding: .6rem 1.25rem; border-radius: 2rem; text-decoration: none; transition: background .2s, transform .15s; }
+  .nav-cta:hover { background: var(--mauve); transform: translateY(-1px); }
+
+  .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: none; padding: .25rem; }
+  .nav-toggle span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: transform .3s, opacity .3s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; overflow: hidden;
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 9rem 2.5rem 5rem;
+    background: var(--near-black); color: var(--cream);
+  }
+  .hero-bg-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center; z-index: 0;
+    filter: saturate(.9);
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 1;
+    background:
+      linear-gradient(90deg, rgba(107,79,82,.82) 0%, rgba(107,79,82,.55) 45%, rgba(107,79,82,.3) 100%),
+      linear-gradient(0deg, rgba(107,79,82,.75) 0%, rgba(107,79,82,.15) 45%);
+  }
+  .hero-inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%; }
+
+  .hero-eyebrow { display: flex; align-items: center; gap: .75rem; font-size: .68rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(245,239,228,.6); margin-bottom: 1.75rem; }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--mauve-2); }
+  .hero-title {
+    font-family: 'Playfair Display', serif; font-weight: 500;
+    font-size: clamp(2.6rem, 7vw, 5.2rem); line-height: 1.05; letter-spacing: -.01em; margin-bottom: 1.75rem;
+    max-width: 900px;
+  }
+  .hero-title em { font-style: italic; font-weight: 400; color: var(--mauve-2); }
+  .hero-sub { font-size: clamp(1rem, 1.6vw, 1.1rem); color: rgba(245,239,228,.78); max-width: 560px; margin-bottom: 2.5rem; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+  .hero-pills { display: flex; gap: .6rem; flex-wrap: wrap; }
+  .hero-pill { font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; padding: .5rem 1rem; border: 1px solid rgba(245,239,228,.2); border-radius: 2rem; color: rgba(245,239,228,.8); }
+
+  /* ── MARQUEE ── */
+  .marquee { background: var(--mauve); overflow: hidden; padding: 1.1rem 0; border-top: 1px solid rgba(245,239,228,.15); border-bottom: 1px solid rgba(245,239,228,.15); }
+  .marquee-track { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+  .marquee-item { display: flex; align-items: center; gap: 1.5rem; padding: 0 1.5rem; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--cream); white-space: nowrap; }
+  .marquee-item::after { content: '✦'; color: rgba(245,239,228,.5); font-size: .6rem; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 7rem 2.5rem; position: relative; z-index: 2; }
+  .wrap { max-width: 1160px; margin: 0 auto; }
+  .section-label { display: flex; align-items: center; gap: .75rem; font-size: .65rem; letter-spacing: .24em; text-transform: uppercase; color: var(--mauve); margin-bottom: 1.25rem; }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--mauve); }
+  .section-title { font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.15; letter-spacing: -.01em; }
+  .section-title em { font-style: italic; font-weight: 400; }
+
+  /* ── SOBRE (asymmetric) ── */
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+  .about-head { max-width: 480px; }
+  .about-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.3rem, 2.6vw, 1.7rem); line-height: 1.55; color: var(--ink); margin-top: 1.5rem; }
+  .about-body p { font-size: .95rem; color: var(--mid); margin-bottom: 1.15rem; }
+  .about-chips { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.75rem; }
+  .about-chip { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; padding: .55rem 1.1rem; border: 1px solid rgba(124,92,84,.3); border-radius: 2rem; color: var(--mauve-dark); }
+  @media (min-width: 900px) { .about-grid { grid-template-columns: .85fr 1.15fr; } }
+
+  /* ── MVV bento ── */
+  .mvv { background: var(--paper); color: var(--ink); }
+  .mvv-grid { display: grid; grid-template-columns: 1fr; gap: 1px; margin-top: 3.5rem; background: rgba(36,28,25,.08); border: 1px solid rgba(36,28,25,.08); }
+  .mvv-card { background: var(--paper); padding: 2.5rem 2rem; transition: background .3s ease; }
+  .mvv-card:hover { background: var(--beige); }
+  .mvv-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15rem; color: var(--mauve); margin-bottom: 1rem; }
+  .mvv-h { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: .9rem; color: var(--ink); }
+  .mvv-p { font-size: .88rem; color: var(--mid); line-height: 1.8; }
+  .values-list { display: flex; flex-wrap: wrap; gap: .55rem; }
+  .value-chip { font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; padding: .5rem .95rem; border: 1px solid rgba(124,92,84,.35); border-radius: 2rem; color: var(--mauve-dark); }
+  @media (min-width: 900px) { .mvv-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+  /* ── ÁREAS — interactive list ── */
+  .areas { background: var(--cream); }
+  .areas-head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem; margin-bottom: 3.5rem; }
+  .areas-head .section-label { justify-content: center; }
+  .areas-intro { display: flex; flex-direction: column; align-items: center; text-align: center; gap: .85rem; max-width: 460px; }
+  .areas-intro-badges { display: flex; align-items: center; justify-content: center; gap: .75rem; flex-wrap: wrap; }
+  .areas-intro-badge { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; padding: .55rem 1.25rem; border-radius: 2rem; background: var(--mauve); color: var(--cream); white-space: nowrap; }
+  .areas-intro-plus { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--mauve-dark); }
+  .areas-intro-text { font-size: .86rem; color: var(--mid); line-height: 1.65; }
+  .area-row {
+    display: grid; grid-template-columns: 3rem 1fr auto; align-items: center; gap: 1.5rem;
+    padding: 2rem 0; border-top: 1px solid rgba(36,28,25,.12);
+    cursor: none; transition: padding-left .3s ease;
+  }
+  .area-row:last-child { border-bottom: 1px solid rgba(36,28,25,.12); }
+  .area-row:hover { padding-left: 1rem; }
+  .area-row-num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--mauve); }
+  .area-row-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 3vw, 2.1rem); transition: color .3s; }
+  .area-row:hover .area-row-title { color: var(--mauve); }
+  .area-row-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(36,28,25,.2); display: flex; align-items: center; justify-content: center; transition: transform .35s ease, background .3s, border-color .3s; flex-shrink: 0; }
+  .area-row.open .area-row-arrow { transform: rotate(135deg); background: var(--mauve); border-color: var(--mauve); }
+  .area-row.open .area-row-arrow svg { stroke: var(--cream); }
+  .area-row-arrow svg { width: 15px; height: 15px; stroke: var(--ink); fill: none; stroke-width: 1.6; }
+  .area-body { grid-column: 1 / -1; max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+  .area-body-inner { display: flex; flex-wrap: wrap; gap: .6rem; padding-top: 1.5rem; }
+  .area-body-tag { font-size: .78rem; color: var(--mid); padding: .5rem 1rem; background: var(--beige); border-radius: 2rem; }
+
+  /* ── EQUIPE ── */
+  .team { background: var(--beige); }
+  .team-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 3rem; }
+  .team-card { position: relative; background: var(--paper); border-radius: var(--radius); overflow: hidden; transition: transform .3s ease, box-shadow .3s ease; }
+  .team-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(36,28,25,.12); }
+  .team-photo-wrap { position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
+  .team-photo { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; filter: saturate(.94) contrast(1.02); transition: transform .5s ease; }
+  .team-card:hover .team-photo { transform: scale(1.04); }
+  .team-photo-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(107,79,82,0) 60%, rgba(107,79,82,.5) 100%); }
+  .team-body { padding: 1.75rem 1.75rem 2rem; }
+  .team-role { font-size: .65rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mauve); margin-bottom: .6rem; }
+  .team-name { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 1.1rem; }
+  .team-list { list-style: none; }
+  .team-list li { font-size: .85rem; color: var(--mid); margin-bottom: .5rem; padding-left: 1.1rem; position: relative; }
+  .team-list li::before { content: '—'; position: absolute; left: 0; color: var(--light); }
+  @media (min-width: 860px) { .team-grid { grid-template-columns: 1.12fr 1fr; align-items: start; } }
+
+  /* ── FAQ ── */
+  .faq { background: var(--paper); }
+  .faq-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-top: 1rem; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item { border-top: 1px solid rgba(36,28,25,.12); }
+  .faq-item:last-child { border-bottom: 1px solid rgba(36,28,25,.12); }
+  .faq-q { width: 100%; background: none; border: none; display: flex; justify-content: space-between; align-items: center; padding: 1.6rem 0; font-family: 'Inter', sans-serif; font-size: .95rem; font-weight: 400; color: var(--ink); text-align: left; cursor: none; gap: 1rem; }
+  .faq-q:hover { color: var(--mauve); }
+  .faq-icon { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(36,28,25,.25); display: flex; align-items: center; justify-content: center; transition: transform .3s ease, background .2s; font-size: .9rem; line-height: 1; color: var(--mid); }
+  .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--mauve); color: #fff; border-color: var(--mauve); }
+  .faq-a { overflow: hidden; max-height: 0; transition: max-height .4s ease; }
+  .faq-a-inner { padding-bottom: 1.6rem; font-size: .9rem; color: var(--mid); line-height: 1.8; max-width: 560px; }
+  @media (min-width: 900px) { .faq-grid { grid-template-columns: .7fr 1.3fr; } }
+
+  /* ── CONTATO ── */
+  .contact { background: var(--wine); color: var(--cream); }
+  .contact .section-label { color: var(--mauve-2); }
+  .contact .section-label::before { background: var(--mauve-2); }
+  .contact-top { max-width: 640px; margin-bottom: 3.5rem; }
+  .contact-sub { font-size: .95rem; color: rgba(245,239,228,.62); margin-top: 1.25rem; }
+  .contact-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; background: rgba(245,239,228,.04); border: 1px solid rgba(245,239,228,.12); border-radius: var(--radius); padding: 2rem; backdrop-filter: blur(6px); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .contact-form input, .contact-form select, .contact-form textarea {
+    width: 100%; background: rgba(245,239,228,.06); border: 1px solid rgba(245,239,228,.18);
+    border-radius: .3rem; padding: .9rem 1.1rem; font-family: 'Inter', sans-serif; font-size: .875rem; font-weight: 300;
+    color: var(--cream); outline: none; transition: border-color .2s; appearance: none;
+  }
+  .contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(245,239,228,.35); }
+  .contact-form select { color: rgba(245,239,228,.7); }
+  .contact-form select option { background: var(--near-black); color: var(--cream); }
+  .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--mauve-2); }
+  .contact-form textarea { resize: vertical; min-height: 120px; }
+  .btn-send { background: var(--cream); color: var(--near-black); border: none; border-radius: 2rem; padding: 1rem 2.2rem; font-family: 'Inter', sans-serif; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 400; cursor: none; transition: opacity .2s, transform .15s; align-self: flex-start; }
+  .btn-send:hover { opacity: .88; transform: translateY(-2px); }
+
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .info-block { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem; border: 1px solid rgba(245,239,228,.1); border-radius: var(--radius); transition: border-color .25s; }
+  .info-block:hover { border-color: rgba(245,239,228,.3); }
+  .info-ico { width: 18px; height: 18px; flex-shrink: 0; margin-top: .15rem; stroke: var(--mauve-2); fill: none; stroke-width: 1.4; }
+  .info-label { font-size: .63rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(245,239,228,.45); margin-bottom: .3rem; }
+  .info-val { font-size: .92rem; color: rgba(245,239,228,.92); line-height: 1.6; }
+  .info-val a { text-decoration: none; }
+  .info-val a:hover { text-decoration: underline; }
+  .contact-social { display: flex; gap: .75rem; flex-wrap: wrap; }
+  @media (min-width: 900px) { .contact-grid { grid-template-columns: 1.1fr .9fr; } }
+
+  /* ── BUTTONS ── */
+  .btn { display: inline-flex; align-items: center; gap: .5rem; padding: .95rem 2.1rem; border-radius: 2rem; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border: 1px solid transparent; transition: opacity .2s, transform .15s, background .2s, color .2s; }
+  .btn:hover { opacity: .92; transform: translateY(-2px); }
+  .btn-cream { background: var(--cream); color: var(--near-black); }
+  .btn-outline { border-color: rgba(245,239,228,.35); color: var(--cream); }
+  .btn-mauve { background: var(--mauve); color: var(--cream); }
+  .ico-wa { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; }
+
+  /* ── FLOATING WHATSAPP + BACK TO TOP ── */
+  .floaters { position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 90; display: flex; flex-direction: column; gap: .75rem; align-items: flex-end; }
+  .float-btn { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 10px 26px rgba(36,28,25,.25); transition: transform .2s; cursor: none; }
+  .float-btn:hover { transform: translateY(-3px); }
+  .float-wa { background: #25D366; }
+  .float-wa svg { width: 24px; height: 24px; fill: #fff; }
+  .float-top { background: var(--ink); color: var(--cream); font-size: 1rem; opacity: 0; pointer-events: none; transition: opacity .25s, transform .2s; }
+  .float-top.show { opacity: 1; pointer-events: auto; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--cream); border-top: 1px solid rgba(36,28,25,.1); padding: 3rem 2.5rem 1.5rem; color: var(--ink); }
+  .footer-logo { display: block; height: 34px; width: auto; margin-bottom: 2rem; }
+  .footer-top { display: flex; flex-direction: column; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(36,28,25,.1); margin-bottom: 1.5rem; }
+  .footer-cta { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.6rem, 3.5vw, 2.4rem); max-width: 520px; color: var(--ink); }
+  .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .footer-links a { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); text-decoration: none; }
+  .footer-links a:hover { color: var(--mauve); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; }
+  .footer-bottom p, .footer-bottom a { font-size: .68rem; letter-spacing: .06em; color: var(--light); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--mauve); }
+  @media (min-width: 780px) { .footer-top { flex-direction: row; justify-content: space-between; align-items: center; } }
+
+  /* ── RESPONSIVE NAV ── */
+  @media (max-width: 760px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-logo-img { height: 34px; }
+    .nav-toggle { display: flex; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--cream); border-bottom: 1px solid rgba(36,28,25,.08); padding: .75rem 0; align-items: stretch; }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links li a:not(.nav-cta) { display: block; padding: .9rem 1.5rem; }
+    .nav-cta { display: block; margin: .5rem 1.5rem; text-align: center; }
+    section { padding: 4.5rem 1.25rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .btn-send { align-self: stretch; text-align: center; }
+    .area-row { grid-template-columns: 2.2rem 1fr auto; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div id="progress"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img class="nav-logo-img" src="assets/footer-logo.png" alt="Fabrícia Novaes Barcellos — Advocacia" />
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#areas">Áreas de atuação</a></li>
+      <li><a href="#equipe">Equipe</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://wa.me/5527992928887?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20FNB%20Advocacia." target="_blank" rel="noopener" class="nav-cta">Fale conosco</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <!-- Troque pela foto de Vitória/ES: coloque o arquivo em assets/vitoria.jpg -->
+    <img class="hero-bg-img" src="assets/vitoria.jpg" alt="Vista da cidade de Vitória, Espírito Santo" loading="eager" onerror="this.style.display='none'" />
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="reveal visible">
+        <p class="hero-eyebrow">FNB Advocacia · Vitória / ES</p>
+        <h1 class="hero-title">Suporte jurídico <em>estratégico</em> para pessoas e negócios em constante transformação.</h1>
+        <p class="hero-sub">Soluções que agregam valor, impulsionam o crescimento e geram resultados — abordagem individual, próxima e personalizada, com foco no cliente.</p>
+        <div class="hero-actions">
+          <a href="https://wa.me/5527992928887?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20FNB%20Advocacia."
+             target="_blank" rel="noopener" class="btn btn-cream">Fale conosco</a>
+          <a href="#areas" class="btn btn-outline">Ver áreas de atuação</a>
+        </div>
+        <div class="hero-pills">
+          <span class="hero-pill">Direito Civil</span>
+          <span class="hero-pill">Direito Empresarial</span>
+          <span class="hero-pill">Direito Societário</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">Direito Civil</span>
+      <span class="marquee-item">Direito Empresarial</span>
+      <span class="marquee-item">Direito Societário</span>
+      <span class="marquee-item">Atendimento Estratégico</span>
+      <span class="marquee-item">FNB Advocacia</span>
+      <span class="marquee-item">Direito Civil</span>
+      <span class="marquee-item">Direito Empresarial</span>
+      <span class="marquee-item">Direito Societário</span>
+      <span class="marquee-item">Atendimento Estratégico</span>
+      <span class="marquee-item">FNB Advocacia</span>
+    </div>
+  </div>
+
+  <!-- SOBRE -->
+  <section class="about" id="sobre">
+    <div class="wrap about-grid">
+      <div class="about-head reveal">
+        <p class="section-label">quem somos</p>
+        <h2 class="section-title">Uma advocacia <em>boutique</em>, pensada para pessoas.</h2>
+        <p class="about-quote">"Acompanhamos pessoas e negócios em diversos momentos de sua trajetória."</p>
+      </div>
+      <div class="about-body reveal" style="--d:.1s">
+        <p>Somos um <strong>Escritório de Advocacia Boutique</strong>, especializado nas áreas de Direito Civil, Empresarial e Societário. Com uma abordagem estratégica, individual e personalizada, nos dedicamos a prevenir e resolver problemas jurídicos com responsabilidade e transparência.</p>
+        <p>Acreditamos na entrega de um trabalho verdadeiro, dinâmico e integrado através de soluções jurídicas que promovam a diferença na vida das pessoas, sempre com excelência e compromisso.</p>
+        <div class="about-chips">
+          <span class="about-chip">Abordagem individual</span>
+          <span class="about-chip">Atendimento estratégico</span>
+          <span class="about-chip">Transparência</span>
+          <span class="about-chip">Boutique</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MVV -->
+  <section class="mvv">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="section-label">no que acreditamos</p>
+        <h2 class="section-title">Missão, visão<br><em>e valores</em></h2>
+      </div>
+      <div class="mvv-grid">
+        <div class="mvv-card reveal" style="--d:.05s">
+          <p class="mvv-num">01 — Missão</p>
+          <h3 class="mvv-h">Assessoria estratégica</h3>
+          <p class="mvv-p">Assessorar pessoas e negócios com soluções jurídicas estratégicas, buscando prevenir litígios e garantir suporte necessário para a tomada de decisões assertivas e eficazes.</p>
+        </div>
+        <div class="mvv-card reveal" style="--d:.15s">
+          <p class="mvv-num">02 — Visão</p>
+          <h3 class="mvv-h">Referência no setor</h3>
+          <p class="mvv-p">Ser referência na advocacia empresarial e societária, reconhecida pela excelência no atendimento, soluções personalizadas e pela construção de relações sólidas e de confiança.</p>
+        </div>
+        <div class="mvv-card reveal" style="--d:.25s">
+          <p class="mvv-num">03 — Valores</p>
+          <div class="values-list">
+            <span class="value-chip">Confiança</span>
+            <span class="value-chip">Responsabilidade</span>
+            <span class="value-chip">Transparência</span>
+            <span class="value-chip">Comprometimento</span>
+            <span class="value-chip">Resiliência</span>
+            <span class="value-chip">Competência</span>
+            <span class="value-chip">Equilíbrio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÁREAS -->
+  <section class="areas" id="areas">
+    <div class="wrap">
+      <div class="areas-head reveal">
+        <div>
+          <p class="section-label">o que fazemos</p>
+          <h2 class="section-title">Áreas de <em>atuação</em></h2>
+        </div>
+        <div class="areas-intro">
+          <div class="areas-intro-badges">
+            <span class="areas-intro-badge">Consultivo</span>
+            <span class="areas-intro-plus">&amp;</span>
+            <span class="areas-intro-badge">Contencioso</span>
+          </div>
+          <p class="areas-intro-text">O escritório atua em duas frentes complementares, consultiva e contenciosa, buscando sempre a melhor solução para cada cliente.</p>
+        </div>
+      </div>
+
+      <div class="area-row" data-area>
+        <span class="area-row-num">01</span>
+        <h3 class="area-row-title">Direito Civil</h3>
+        <span class="area-row-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        <div class="area-body">
+          <div class="area-body-inner">
+            <span class="area-body-tag">Responsabilidade Civil</span>
+            <span class="area-body-tag">Obrigações</span>
+            <span class="area-body-tag">Contratos</span>
+            <span class="area-body-tag">Capacidade Civil</span>
+            <span class="area-body-tag">Planejamento Patrimonial e Sucessório</span>
+            <span class="area-body-tag">Órfãos e Sucessões</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-row" data-area>
+        <span class="area-row-num">02</span>
+        <h3 class="area-row-title">Direito Empresarial</h3>
+        <span class="area-row-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        <div class="area-body">
+          <div class="area-body-inner">
+            <span class="area-body-tag">Consultoria Jurídica para Empresas</span>
+            <span class="area-body-tag">Contratos Empresariais</span>
+            <span class="area-body-tag">Sucessão Empresarial</span>
+            <span class="area-body-tag">Governança Corporativa</span>
+            <span class="area-body-tag">Contencioso Empresarial</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="area-row" data-area>
+        <span class="area-row-num">03</span>
+        <h3 class="area-row-title">Direito Societário</h3>
+        <span class="area-row-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        <div class="area-body">
+          <div class="area-body-inner">
+            <span class="area-body-tag">Estruturação e Reestruturação de Negócios</span>
+            <span class="area-body-tag">Atos Constitutivos</span>
+            <span class="area-body-tag">Acordos Societários</span>
+            <span class="area-body-tag">Contratos de Investimento</span>
+            <span class="area-body-tag">Planos de Incentivo de Longo Prazo (Partnership, Stock Option, etc.)</span>
+            <span class="area-body-tag">Dissolução de Sociedade</span>
+            <span class="area-body-tag">Contencioso Societário</span>
+            <span class="area-body-tag">M&amp;A — Fusão, Cisão e Incorporação</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EQUIPE -->
+  <section class="team" id="equipe">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="section-label">quem cuida do seu caso</p>
+        <h2 class="section-title">Equipe <em>FNB</em></h2>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="assets/fabricia.jpg" alt="Fabrícia Novaes Barcellos, advogada fundadora do FNB Advocacia" loading="lazy" />
+          </div>
+          <div class="team-body">
+            <p class="team-role">Advogada · Fundadora do FNB Advocacia</p>
+            <h3 class="team-name">Fabrícia Novaes Barcellos</h3>
+            <ul class="team-list">
+              <li>Formada em Direito pela Faculdade de Direito de Vitória — FDV/ES</li>
+              <li>Pós-graduada em Direito Civil e Processo Civil — FGV Direito Rio</li>
+              <li>Pós-graduada em Direito Societário — FGV Direito São Paulo</li>
+              <li>Formação em Direito Societário — PUC/SP</li>
+              <li>Formação em Gestão Jurídica e Corporativa — Saint Paul Escola de Negócios/SP</li>
+            </ul>
+          </div>
+        </div>
+        <div class="team-card reveal" style="--d:.1s">
+          <div class="team-photo-wrap">
+            <img class="team-photo" src="assets/edilania.jpg" alt="Edilania Melo Marinho, advogada do FNB Advocacia" loading="lazy" />
+          </div>
+          <div class="team-body">
+            <p class="team-role">Advogada</p>
+            <h3 class="team-name">Edilania Melo Marinho</h3>
+            <ul class="team-list">
+              <li>Formada em Direito pela Universidade Federal do Piauí — UFPI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap faq-grid">
+      <div class="reveal">
+        <p class="section-label">dúvidas</p>
+        <h2 class="section-title">Perguntas<br><em>frequentes</em></h2>
+      </div>
+      <div class="faq-list reveal" style="--d:.1s">
+        <div class="faq-item">
+          <button class="faq-q">Como funciona o primeiro contato?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Você nos chama pelo WhatsApp, e-mail ou pelo formulário abaixo contando brevemente o seu caso. A partir daí, agendamos uma conversa para entender a situação com mais profundidade e indicar os próximos passos.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">O escritório atende clientes de outras cidades ou estados?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Sim. Grande parte do atendimento e da consultoria jurídica pode ser conduzida remotamente. Quando o caso exige atos presenciais, avaliamos juntos a melhor forma de conduzir o processo.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Como são definidos os honorários?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Cada caso é avaliado individualmente, considerando complexidade, urgência e escopo do trabalho. Após a análise inicial, apresentamos uma proposta clara e transparente antes do início dos serviços.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Quais documentos devo levar para a primeira reunião?<span class="faq-icon">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Depende da natureza do caso. Assim que o contato inicial for feito, orientamos exatamente quais documentos e informações são necessários para a análise.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <div class="contact-top reveal">
+        <p class="section-label">vamos conversar</p>
+        <h2 class="section-title">Mande-nos uma<br><em>mensagem.</em></h2>
+        <p class="contact-sub">Conte um pouco sobre o seu caso. Retornamos o quanto antes para entender como podemos ajudar.</p>
+      </div>
+
+      <div class="contact-grid">
+        <form class="contact-form reveal" action="https://formsubmit.co/fnblaw@outlook.com" method="POST">
+          <input type="hidden" name="_subject" value="Novo contato pelo site FNB Advocacia" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <div class="form-row">
+            <input type="text"  name="Nome"  placeholder="Seu nome"  required />
+            <input type="email" name="E-mail" placeholder="Seu e-mail" required />
+          </div>
+          <input type="tel" name="Telefone" placeholder="Seu telefone / WhatsApp" />
+          <select name="Área de interesse">
+            <option value="" disabled selected>Sobre o que você precisa falar?</option>
+            <option value="Direito Civil">Direito Civil</option>
+            <option value="Direito Empresarial">Direito Empresarial</option>
+            <option value="Direito Societário">Direito Societário</option>
+            <option value="Outro">Outro / não sei ainda</option>
+          </select>
+          <textarea name="Mensagem" placeholder="Me conta um pouco sobre o seu caso..." required></textarea>
+          <button type="submit" class="btn-send">Enviar mensagem</button>
+        </form>
+
+        <div class="contact-info reveal" style="--d:.1s">
+          <div class="info-block">
+            <svg class="info-ico" viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/><path d="m3 5 9 7 9-7"/></svg>
+            <div>
+              <p class="info-label">E-mail</p>
+              <p class="info-val"><a href="mailto:fnblaw@outlook.com">fnblaw@outlook.com</a></p>
+            </div>
+          </div>
+          <div class="info-block">
+            <svg class="info-ico" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.77.66 2.61a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.47-1.27a2 2 0 0 1 2.11-.45c.84.32 1.71.54 2.61.66A2 2 0 0 1 22 16.92Z"/></svg>
+            <div>
+              <p class="info-label">Telefone / WhatsApp</p>
+              <p class="info-val"><a href="https://wa.me/5527992928887" target="_blank" rel="noopener">(27) 99292-8887</a></p>
+            </div>
+          </div>
+          <div class="info-block">
+            <svg class="info-ico" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <p class="info-label">Endereço</p>
+              <p class="info-val">Ed. Arábica — R. Abiail do Amaral Carneiro, 191, sala 311<br>Enseada do Suá, Vitória/ES — CEP 29.050-535</p>
+            </div>
+          </div>
+          <div class="info-block">
+            <svg class="info-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <div>
+              <p class="info-label">Horário de atendimento</p>
+              <p class="info-val">Segunda a sexta, das 9h às 18h</p>
+            </div>
+          </div>
+          <div class="contact-social">
+            <a href="https://wa.me/5527992928887?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20FNB%20Advocacia."
+               target="_blank" rel="noopener" class="btn btn-mauve" aria-label="Contato via WhatsApp">
+              <svg class="ico-wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.98L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 21.93a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.63-.24-.38A9.9 9.9 0 0 1 2.07 12C2.07 6.52 6.52 2.07 12 2.07S21.93 6.52 21.93 12 17.48 21.93 12 21.93zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07a8.17 8.17 0 0 1-2.4-1.48 9 9 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.57-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.44s1.05 2.83 1.2 3.03c.15.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.67.62.7.22 1.34.19 1.84.12.56-.09 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
+              WhatsApp
+            </a>
+            <a href="https://www.instagram.com/fnb_advocacia" target="_blank" rel="noopener" class="btn btn-outline">@fnb_advocacia</a>
+            <a href="https://www.instagram.com/fabricianbarcellos_" target="_blank" rel="noopener" class="btn btn-outline">@fabricianbarcellos_</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img class="footer-logo" src="assets/footer-logo.png" alt="Fabrícia Novaes Barcellos — Advocacia" loading="lazy" />
+    <div class="footer-top">
+      <p class="footer-cta">Suporte jurídico estratégico para pessoas e negócios em constante transformação.</p>
+      <div class="footer-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#areas">Áreas de atuação</a>
+        <a href="#equipe">Equipe</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 FNB Advocacia</p>
+      <a href="https://www.instagram.com/fnb_advocacia" target="_blank" rel="noopener">@fnb_advocacia</a>
+    </div>
+  </footer>
+
+  <!-- FLOATERS -->
+  <div class="floaters">
+    <button class="float-btn float-top" id="toTop" aria-label="Voltar ao topo">↑</button>
+    <a class="float-btn float-wa" href="https://wa.me/5527992928887?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20a%20FNB%20Advocacia." target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.17 1.6 5.98L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 21.93a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.63-.24-.38A9.9 9.9 0 0 1 2.07 12C2.07 6.52 6.52 2.07 12 2.07S21.93 6.52 21.93 12 17.48 21.93 12 21.93zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15s-.77.97-.94 1.17c-.17.2-.35.22-.65.07a8.17 8.17 0 0 1-2.4-1.48 9 9 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.91-2.2-.24-.57-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1-1.03 2.44s1.05 2.83 1.2 3.03c.15.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.67.62.7.22 1.34.19 1.84.12.56-.09 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.19-.57-.34z"/></svg>
+    </a>
+  </div>
+
+  <script>
+    // ── Cursor ──
+    const cur = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
+    (function animRing() { rx += (mx - rx) * .14; ry += (my - ry) * .14; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); })();
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // ── Scroll progress + back to top ──
+    const progress = document.getElementById('progress');
+    const toTop = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      progress.style.width = scrolled + '%';
+      toTop.classList.toggle('show', h.scrollTop > 600);
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // ── Scroll reveal (staggered) ──
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Mobile nav ──
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open'); toggle.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-a');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(o => { o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = '0'; });
+        if (!isOpen) { item.classList.add('open'); answer.style.maxHeight = answer.scrollHeight + 'px'; }
+      });
+    });
+
+    // ── Áreas de atuação accordion ──
+    document.querySelectorAll('[data-area]').forEach(row => {
+      row.addEventListener('click', () => {
+        const body = row.querySelector('.area-body');
+        const isOpen = row.classList.contains('open');
+        document.querySelectorAll('[data-area].open').forEach(o => { o.classList.remove('open'); o.querySelector('.area-body').style.maxHeight = '0'; });
+        if (!isOpen) { row.classList.add('open'); body.style.maxHeight = body.scrollHeight + 'px'; }
+      });
+    });
+  </script>
+
+</body>
+</html>
