@@ -355,6 +355,9 @@
   .pub-text > blockquote:first-child { margin-top: 0; }
   .pub-text a { color: var(--mauve-dark); }
   .pub-text strong { font-weight: 500; color: var(--ink); }
+  /* texto das publicações justificado; no celular, com hifenização para evitar buracos entre palavras */
+  .pub-text p, .pub-text li { text-align: justify; }
+  @media (max-width: 560px) { .pub-text p, .pub-text li { hyphens: auto; -webkit-hyphens: auto; } }
   .pub-text sup { font-size: .7em; line-height: 0; color: var(--mauve-dark); }
   .pub-notes { margin-top: 2rem; padding-top: 1.25rem; border-top: 1px solid rgba(36,28,25,.12); }
   .pub-notes p { font-size: .8rem; line-height: 1.7; color: var(--light); margin-bottom: .6rem; }
